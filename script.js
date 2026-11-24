@@ -1,5 +1,5 @@
 // Email address that receives contact-form enquiries. Change this to your own.
-const CONTACT_EMAIL = "hello@meridianadvisory.com";
+const CONTACT_EMAIL = ""; // e.g. "you@yourfirm.com"
 
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -82,6 +82,12 @@ form.addEventListener("submit", (e) => {
     status.className = "form-status error";
     status.textContent = "Please complete the highlighted fields with valid details.";
     form.querySelector(".invalid").focus();
+    return;
+  }
+
+  if (!CONTACT_EMAIL) {
+    status.className = "form-status error";
+    status.textContent = "This form isn't connected yet. Please use the contact details shown.";
     return;
   }
 
