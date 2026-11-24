@@ -1,9 +1,17 @@
-# Financial consulting website
+# Financial consulting firm website
 
-Static website for a financial consulting firm. Open `index.html` in a browser; no build step needed.
+A static, multi-page website. Open `index.html` in a browser; no build step needed.
 
-- `index.html`: page content
-- `styles.css`: design and layout
-- `script.js`: mobile menu, animations, contact form (set `CONTACT_EMAIL` at the top)
+## Pages
+- `index.html` – Home
+- `services.html` and `services/*.html` – one page per service
+- `industries.html`, `insights.html` + `insights/*.html`, `case-studies.html`
+- `about.html`, `careers.html`, `contact.html`
 
-Fill in every `[bracketed]` placeholder in `index.html` with your firm's details.
+Shared files: `styles.css` (design) and `script.js` (menus, animations, forms).
+
+## Filling in your details
+Search all files for `[` and replace each bracketed placeholder, for example `[Firm Name]`, `[Your email address]`, `[Full name]`.
+
+- **Highlight numbers** (home page): replace `[ ]` with your number and put the same number in `data-count`, e.g. `<strong data-count="15" data-suffix="+">15+</strong>`. It will count up on scroll.
+- **Contact & newsletter forms**: create a form at a service such as Formspree and paste its URL into `formEndpoint` at the top of `script.js`.
