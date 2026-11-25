@@ -368,5 +368,42 @@ const SITE = {
     if (r === "ok") form.reset();
   }));
 
+
+  /* ---------- Promo video ---------- */
+  const promo = $("#promo");
+  if (promo) {
+    const frame = promo.closest(".video-frame");
+    const playBtn = $(".video-play", frame);
+    let withSound = false;
+    // A muted preview plays while the video is on screen (skipped for reduced motion).
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      new IntersectionObserver(([e]) => {
+        if (withSound) { if (!e.isIntersecting) promo.pause(); return; }
+        if (e.isIntersecting) promo.play().catch(() => {}); else promo.pause();
+      }, { threshold: 0.4 }).observe(promo);
+    }
+    function playWithSound(at = 0) {
+      withSound = true;
+      promo.muted = false;
+      promo.loop = false;
+      promo.controls = true;
+      promo.currentTime = at;
+      promo.play().catch(() => {});
+      frame.classList.add("is-playing");
+    }
+    playBtn.addEventListener("click", () => playWithSound(0));
+    $$("[data-seek]").forEach((b) => b.addEventListener("click", () => {
+      playWithSound(parseFloat(b.dataset.seek));
+      frame.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    }));
+    promo.addEventListener("ended", () => {
+      promo.controls = false;
+      frame.classList.remove("is-playing");
+      withSound = false;
+      promo.muted = true;
+      promo.loop = true;
+    });
+  }
+
   onScroll();
 })();
