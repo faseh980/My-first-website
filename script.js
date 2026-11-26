@@ -405,5 +405,13 @@ const SITE = {
     });
   }
 
+
+  /* ---------- Animated illustrations: play only while on screen ---------- */
+  const illoHosts = $$(".thumb, .hero-visual");
+  if (illoHosts.length && "IntersectionObserver" in window && !reduceMotion) {
+    const iio = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("play", e.isIntersecting)), { threshold: 0.15 });
+    illoHosts.forEach((el) => iio.observe(el));
+  }
+
   onScroll();
 })();
