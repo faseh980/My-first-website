@@ -958,3 +958,6 @@ body:not(.header-hidden) .subnav { top: calc(var(--header-h) + env(safe-area-ins
 .case-feature.single { grid-template-columns: 1fr; } .case-feature.single .panel-ink { gap: 22px; } .case-feature.single blockquote { max-width: 980px; } .case-feature.single .link-arrow { color: var(--accent); }
 .a-pulse { transform-origin: center; animation: ill-pulse 2s ease-out infinite; }
 @keyframes ill-pulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(3); opacity: 0; } }
+.footer-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.footer-tag::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+.footer-brand > p.footer-desc { max-width: 380px; font-size: 1rem; line-height: 1.7; color: var(--on-ink-muted); }
