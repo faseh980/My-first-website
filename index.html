@@ -83,11 +83,13 @@
 </section>
 
 <section class="intent" aria-label="Find the right service">
-  <form class="wrap intent-inner" onsubmit="return false">
-    <label class="intent-label" for="intent">I want to</label>
-    <select class="intent-select" id="intent"><option value="services/cfo-advisory.html">improve my cash flow</option><option value="services/deals-advisory.html">raise funding for growth</option><option value="services/tax.html">reduce my tax bill legally</option><option value="services/audit-assurance.html">get ready for an audit</option><option value="services/deals-advisory.html">value or sell my business</option><option value="services/tax.html">respond to a tax notice</option><option value="services/cfo-advisory.html">hire a part-time CFO</option><option value="services/bookkeeping.html">get my books up to date</option><option value="services/erp-implementation.html">move off spreadsheets</option><option value="startups.html">set up my startup's finances</option><option value="contact.html">talk to an adviser</option></select>
-    <a class="btn btn-ink" id="intent-go" href="#">Show me how <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </form>
+  <div class="wrap">
+    <form class="intent-card" onsubmit="return false">
+      <div class="intent-text"><span class="intent-hint">Find the right service</span><label class="intent-label" for="intent">What would you like to do?</label></div>
+      <div class="intent-field"><span class="intent-prefix">I want to</span><select class="intent-select" id="intent"><option value="services/cfo-advisory.html">improve my cash flow</option><option value="services/deals-advisory.html">raise funding for growth</option><option value="services/tax.html">reduce my tax bill legally</option><option value="services/audit-assurance.html">get ready for an audit</option><option value="services/deals-advisory.html">value or sell my business</option><option value="services/tax.html">respond to a tax notice</option><option value="services/cfo-advisory.html">hire a part-time CFO</option><option value="services/bookkeeping.html">get my books up to date</option><option value="services/erp-implementation.html">move off spreadsheets</option><option value="startups.html">set up my startup's finances</option><option value="contact.html">talk to an adviser</option></select></div>
+      <a class="btn btn-accent" id="intent-go" href="#">Show me how <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </form>
+  </div>
 </section>
 
 <section class="section video-sec" id="watch" aria-labelledby="watch-title">
