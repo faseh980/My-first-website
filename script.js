@@ -413,5 +413,45 @@ const SITE = {
     illoHosts.forEach((el) => iio.observe(el));
   }
 
+
+  /* ---------- Interactive pickers (software, month-end days, roadmap) ---------- */
+  $$("[data-picker]").forEach((box) => {
+    const btns = $$("[data-pick]", box), panels = $$("[data-panel]", box), line = $(".road-line", box);
+    let timer = null, idx = 0;
+    function show(i, user) {
+      idx = i;
+      btns.forEach((b, k) => b.setAttribute("aria-selected", String(k === i)));
+      panels.forEach((p) => (p.hidden = p.dataset.panel !== btns[i].dataset.pick));
+      if (line) line.style.setProperty("--rp", btns.length > 1 ? i / (btns.length - 1) : 0);
+      if (user && timer) { clearInterval(timer); timer = null; }
+    }
+    btns.forEach((b, k) => b.addEventListener("click", () => show(k, true)));
+    if (box.dataset.autoplay && !reduceMotion && "IntersectionObserver" in window) {
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !timer && !box.dataset.stopped) timer = setInterval(() => { if (!box.matches(":hover")) show((idx + 1) % btns.length); }, +box.dataset.autoplay);
+        if (!e.isIntersecting && timer) { clearInterval(timer); timer = null; }
+      }, { threshold: 0.3 }).observe(box);
+      box.addEventListener("click", () => (box.dataset.stopped = "1"));
+    }
+    show(0);
+  });
+
+  /* ---------- ERP fit check ---------- */
+  const fit = $("#erp-check");
+  if (fit) {
+    const boxes = $$("input", fit), bar = $(".fit-bar i", fit), msg = $(".fit-msg", fit), n = $(".fit-n", fit);
+    const update = () => {
+      const c = boxes.filter((b) => b.checked).length;
+      bar.style.transform = `scaleX(${c / boxes.length})`;
+      n.textContent = `${c} of ${boxes.length}`;
+      msg.textContent = c === 0 ? "Tick any that apply to see your result."
+        : c <= 2 ? "Your current tools may still work. We can help you get more from them."
+        : c <= 4 ? "You're feeling growing pains. An ERP review could save your team a lot of time."
+        : "It's very likely time for an ERP. Let's find the right fit for your business.";
+    };
+    boxes.forEach((b) => b.addEventListener("change", update));
+    update();
+  }
+
   onScroll();
 })();
