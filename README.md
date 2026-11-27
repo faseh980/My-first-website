@@ -5,7 +5,7 @@ A static, multi-page website. Open `index.html` in a browser; no build step need
 ## Pages
 - `index.html` – Home
 - `services.html` and `services/*.html` – one page per service
-- `industries.html`, `insights.html` + `insights/*.html`, `case-studies.html`
+- `industries.html`, `insights.html` + `insights/*.html`
 - `about.html`, `careers.html`, `contact.html`
 
 Shared files: `styles.css` (design) and `script.js` (menus, animations, forms).
