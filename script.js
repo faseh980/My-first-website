@@ -282,7 +282,7 @@ const SITE = {
     if (fromHash) select(fromHash);
   });
 
-  /* ---------- Filters (insights, case studies) ---------- */
+  /* ---------- Filters (insights) ---------- */
   $$("[data-filter-group]").forEach((bar) => {
     const target = document.getElementById(bar.dataset.filterGroup);
     const chips = $$(".chip", bar);
