@@ -933,3 +933,16 @@ body:not(.header-hidden) .subnav { top: calc(var(--header-h) + env(safe-area-ins
 }
 @media (max-width: 640px) { .sw-grid { grid-template-columns: repeat(2, 1fr); } .day-tabs { grid-template-columns: repeat(5, 1fr); gap: 4px; } .day-btn { padding: 12px 2px; font-size: .85rem; } }
 .sw-panel[hidden], .day-panel[hidden], .road-panel[hidden] { display: none !important; }
+
+/* ---------- Software shown by name (no logos) ---------- */
+.sw-grid.two { grid-template-columns: repeat(2, 1fr); }
+.sw-card { min-height: 128px; justify-content: space-between; position: relative; overflow: hidden; }
+.sw-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform .35s var(--ease); }
+.sw-card:hover::before, .sw-card[aria-selected="true"]::before { transform: scaleY(1); }
+.sw-card .sw-name { font-size: 1.15rem; }
+.sw-panel-head { flex-wrap: wrap; gap: 12px; }
+.sw-pop { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: #fff; color: var(--ink); font-family: var(--display); font-weight: 600; font-size: 1.15rem; box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .6); }
+.sw-pop::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(20, 193, 143, .25); }
+.sw-panel:not([hidden]) .sw-pop { animation: swPop .5s var(--ease); }
+@keyframes swPop { 0% { transform: scale(.7); opacity: 0; } 70% { transform: scale(1.05); opacity: 1; } 100% { transform: none; } }
+@media (max-width: 640px) { .sw-grid.two { grid-template-columns: 1fr 1fr; } }
